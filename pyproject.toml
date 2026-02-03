@@ -1,0 +1,30 @@
+[project]
+name = "ai-agent-test"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    # 核心规则：
+    # ~=x.y.z → 兼容 x.y 系列的最新版（如 ~=1.2.0 → 1.2.0 ≤ 版本 < 1.3.0）
+    # >=x.y.z → 兼容 x.y.z 及以上所有版本（无上限，风险稍高）
+    # 推荐用 ~= 锁定主/次版本，自动获取补丁版最新；核心库用 >= 锁定最低版本
+    # LangChain 核心（1.x 系列最新版）
+    "langchain~=1.2.0", # 自动获取 1.2.x 最新补丁版（如 1.2.0→1.2.10）
+    "langchain-community~=0.4.1", # 自动获取 0.4.x 最新补丁版
+    "langchain-core~=1.2.5", # 自动获取 1.2.x 最新补丁版
+    "langchain-ollama>=1.0.1", # 1.0.1 及以上所有版本（无上限，适合更新频繁的库）
+    # LangGraph（1.x 系列最新版）
+    "langgraph~=1.0.5", # 自动获取 1.0.x 最新补丁版
+    # 基础依赖（稳定版，锁定主版本）
+
+    "langgraph-checkpoint-postgres>=3.0.3",
+    "psycopg[binary,pool]>=3.0.0",
+    "pydantic~=2.12.5", # 2.12.x 最新补丁版
+    "python-dotenv~=1.2.1", # 1.2.x 最新补丁版
+    "pyyaml~=6.0.3", # 6.0.x 最新补丁版
+]
+
+[[tool.uv.index]]
+url = "https://mirrors.aliyun.com/pypi/simple/"
+default = true
